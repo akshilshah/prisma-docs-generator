@@ -195,14 +195,6 @@ class ModelGenerator {
                 </div>
             </div>
             <hr class="my-8">
-              <div class="px-4 mt-4">
-                <h3 class="mb-2 text-xl" id="model-${model.name}-operations">Operations</h3>
-                <div class="px-2 mb-4">
-                  ${model.operations
-            .map((op) => this.getModelOperationMarkup(op, model.name))
-            .join(`<hr class="my-4">`)}
-                </div>
-            </div>
           </div>
             `)
             .join(`<hr class="my-16">`)}
