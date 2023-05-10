@@ -28,11 +28,11 @@ const generator_helper_1 = require("@prisma/generator-helper");
 const Prism = __importStar(require("prismjs"));
 const helpers_2 = require("./helpers");
 let fieldDirectiveMap = new Map([
-    ['isUnique', '@unique'],
-    ['isId', '@id'],
-    ['hasDefaultValue', '@default'],
-    ['isUpdatedAt', '@updatedAt'],
-    ['hasDefaultValue', '@default'],
+    ["isUnique", "@unique"],
+    ["isId", "@id"],
+    ["hasDefaultValue", "@default"],
+    ["isUpdatedAt", "@updatedAt"],
+    ["hasDefaultValue", "@default"]
 ]);
 class ModelGenerator {
     constructor(d) {
@@ -46,7 +46,7 @@ class ModelGenerator {
         </td>
 
         <td class="px-4 py-2 border"> <ul>
-            ${directive.values.map((val) => `<li>${val}</li>`).join('')}
+            ${directive.values.map((val) => `<li>${val}</li>`).join("")}
           </ul>
         </td>
       </tr>
@@ -69,67 +69,81 @@ class ModelGenerator {
           ${field.directives.length > 0
             ? field.directives
                 .map((directive) => `<li><strong>${directive}</strong></li>`)
-                .join('')
-            : '<li> - </li>'}
+                .join("")
+            : "<li> - </li>"}
         </ul>
       </td>
       <td class="px-4 py-2 border">
-        ${field.required ? `<strong>Yes</strong>` : 'No'}
+        ${field.required ? `<strong>Yes</strong>` : "No"}
       </td>
       <td class="px-4 py-2 border">
-        ${(_a = field.documentation) !== null && _a !== void 0 ? _a : '-'}
+        ${(_a = field.documentation) !== null && _a !== void 0 ? _a : "-"}
       </td>
     </tr>
     `;
     }
     getModelOperationMarkup(operation, modelName) {
-        var _a;
-        return `
-                <div class="mt-4">
-                  <h4 id="${`model-${modelName}-${operation.name}`}" class="mb-2 text-lg font-bold">${operation.name}</h4>
-                  <p>${operation.description}</p>
-                  <div class="mb-2">
-                    <pre
-                      class="language-markup"
-                    ><code class=" language-javascript">${operation.usage}</code></pre>
-                  </div>
-                  <h4 class="text-lg mb-2">Input</h4>
-                  <table class="table-auto mb-2">
-                    <thead>
-                      <tr>
-                        <th class="px-4 py-2 border">Name</th>
-                        <th class="px-4 py-2 border">Type</th>
-                        <th class="px-4 py-2 border">Required</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      ${(_a = operation.opKeys) === null || _a === void 0 ? void 0 : _a.map((opK) => `
-                      <tr>
-                        <td class="px-4 py-2 border">
-                          ${opK.name}
-                        </td>
-                        <td class="px-4 py-2 border">
-                        ${opK.types
-            .map((t) => (0, helpers_2.isScalarType)(t.type)
-            ? t.type
-            : `<a href="#type-inputType-${t.type}">${t.type}${t.isList ? '[]' : ''}</a>`)
-            .join(' | ')}
-                        </td>
-                        <td class="px-4 py-2 border">
-                         ${opK.required ? '<strong>Yes</strong>' : 'No'} 
-                        </td>
-                      </tr>
-                      `).join('')}
-                    </tbody>
-                  </table>
-                  <h4 class="text-lg mb-2">Output</h4>
-                  <div><strong>Type: </strong> <a href="#type-outputType-${operation.output.type}">${operation.output.type}</a></div>
-                  <div><strong>Required: </strong>
-                  ${operation.output.required ? `Yes` : `No`}</div>
-                  <div><strong>List: </strong>
-                  ${operation.output.list ? `Yes` : `No`}</div>
-              </div>
-    `;
+        return ``;
+        // return `
+        //             <div class="mt-4">
+        //               <h4 id="${`model-${modelName}-${operation.name}`}" class="mb-2 text-lg font-bold">${
+        //   operation.name
+        // }</h4>
+        //               <p>${operation.description}</p>
+        //               <div class="mb-2">
+        //                 <pre
+        //                   class="language-markup"
+        //                 ><code class=" language-javascript">${
+        //                   operation.usage
+        //                 }</code></pre>
+        //               </div>
+        //               <h4 class="text-lg mb-2">Input</h4>
+        //               <table class="table-auto mb-2">
+        //                 <thead>
+        //                   <tr>
+        //                     <th class="px-4 py-2 border">Name</th>
+        //                     <th class="px-4 py-2 border">Type</th>
+        //                     <th class="px-4 py-2 border">Required</th>
+        //                   </tr>
+        //                 </thead>
+        //                 <tbody>
+        //                   ${operation.opKeys
+        //                     ?.map(
+        //                       (opK) => `
+        //                   <tr>
+        //                     <td class="px-4 py-2 border">
+        //                       ${opK.name}
+        //                     </td>
+        //                     <td class="px-4 py-2 border">
+        //                     ${opK.types
+        //                       .map((t) =>
+        //                         isScalarType(t.type as string)
+        //                           ? t.type
+        //                           : `<a href="#type-inputType-${t.type}">${t.type}${
+        //                               t.isList ? '[]' : ''
+        //                             }</a>`
+        //                       )
+        //                       .join(' | ')}
+        //                     </td>
+        //                     <td class="px-4 py-2 border">
+        //                      ${opK.required ? '<strong>Yes</strong>' : 'No'}
+        //                     </td>
+        //                   </tr>
+        //                   `
+        //                     )
+        //                     .join('')}
+        //                 </tbody>
+        //               </table>
+        //               <h4 class="text-lg mb-2">Output</h4>
+        //               <div><strong>Type: </strong> <a href="#type-outputType-${
+        //                 operation.output.type
+        //               }">${operation.output.type}</a></div>
+        //               <div><strong>Required: </strong>
+        //               ${operation.output.required ? `Yes` : `No`}</div>
+        //               <div><strong>List: </strong>
+        //               ${operation.output.list ? `Yes` : `No`}</div>
+        //           </div>
+        // `;
     }
     toHTML() {
         return `
@@ -141,7 +155,7 @@ class ModelGenerator {
               <h2 class="text-2xl" id="model-${model.name}">${model.name}</h2>
               ${model.documentation
             ? `<div class="mb-2">Description: ${model.documentation}</div>`
-            : ''}
+            : ""}
               ${model.directives.length > 0
             ? `
               <table class="table-auto">
@@ -154,11 +168,11 @@ class ModelGenerator {
                 <tbody>
                   ${model.directives
                 .map((directive) => this.getModelDiretiveHTML(directive))
-                .join('')}
+                .join("")}
                 </tbody>
               </table>
                 `
-            : ''}
+            : ""}
               <div class="px-4 mt-4">
                 <h3 class="mb-2 text-xl" id="model-${model.name}-fields">Fields</h3>
                 <div class="px-2 mb-4">
@@ -175,7 +189,7 @@ class ModelGenerator {
                     <tbody>
                     ${model.fields
             .map((field) => this.getModelFieldTableRow(field, model.name))
-            .join('')}
+            .join("")}
                     </tbody>
                   </table>
                 </div>
@@ -198,18 +212,18 @@ class ModelGenerator {
     getModelDirective(model) {
         let directiveValue = [];
         if (model.primaryKey)
-            directiveValue.push({ name: '@@id', values: model.primaryKey.fields });
+            directiveValue.push({ name: "@@id", values: model.primaryKey.fields });
         if (model.uniqueFields.length > 0) {
             model.uniqueFields.forEach((uniqueField) => {
                 directiveValue.push({
-                    name: '@@unique',
-                    values: uniqueField,
+                    name: "@@unique",
+                    values: uniqueField
                 });
             });
         }
         if (model.uniqueIndexes.length > 0) {
             model.uniqueIndexes.forEach((uniqueIndex) => {
-                directiveValue.push({ name: '@@index', values: uniqueIndex.fields });
+                directiveValue.push({ name: "@@index", values: uniqueIndex.fields });
             });
         }
         return directiveValue;
@@ -222,17 +236,17 @@ class ModelGenerator {
                 bareTypeName: field.type,
                 documentation: field.documentation,
                 directives: this.getFieldDirectives(field),
-                required: field.isRequired,
+                required: field.isRequired
             };
         });
     }
     getFieldType(field) {
         let name = field.type;
         if (!field.isRequired && !field.isList) {
-            name += '?';
+            name += "?";
         }
         if (field.isList) {
-            name += '[]';
+            name += "[]";
         }
         return name;
     }
@@ -243,18 +257,18 @@ class ModelGenerator {
             const mappedDirectiveValue = fieldDirectiveMap.get(k);
             if (mappedDirectiveValue) {
                 // default needs separate treatment right now as it can be a fn or any other type really
-                if (k === 'hasDefaultValue' && field.default !== undefined) {
-                    if (typeof field.default === 'string' ||
-                        typeof field.default === 'number' ||
-                        typeof field.default === 'boolean') {
+                if (k === "hasDefaultValue" && field.default !== undefined) {
+                    if (typeof field.default === "string" ||
+                        typeof field.default === "number" ||
+                        typeof field.default === "boolean") {
                         directives.push(`${mappedDirectiveValue}(${field.default})`);
                     }
                     if (Array.isArray(field.default)) {
                         directives.push(`${mappedDirectiveValue}([${field.default.toString()}])`);
                     }
-                    else if (typeof field.default === 'object') {
+                    else if (typeof field.default === "object") {
                         // Output of this template is, for example, @default(now())
-                        directives.push(`${mappedDirectiveValue}(${field.default.name}(${field.default.args.join(',')}))`);
+                        directives.push(`${mappedDirectiveValue}(${field.default.name}(${field.default.args.join(",")}))`);
                     }
                 }
                 else {
@@ -268,7 +282,7 @@ class ModelGenerator {
         if (!mappings) {
             throw new Error(`No operation mapping found for model: ${model.name}`);
         }
-        const modelOps = Object.entries(mappings).filter(([map, _val]) => map !== 'model');
+        const modelOps = Object.entries(mappings).filter(([map, _val]) => map !== "model");
         let ops = [];
         modelOps.forEach(([op, val]) => {
             var _a, _b, _c, _d, _e, _f, _g, _h, _j;
@@ -278,7 +292,7 @@ class ModelGenerator {
             switch (op) {
                 case generator_helper_1.DMMF.ModelAction.create: {
                     const field = (_a = schema.outputObjectTypes.prisma
-                        .find((t) => t.name === 'Mutation')) === null || _a === void 0 ? void 0 : _a.fields.find((f) => f.name === val);
+                        .find((t) => t.name === "Mutation")) === null || _a === void 0 ? void 0 : _a.fields.find((f) => f.name === val);
                     ops.push({
                         name: op,
                         description: `Create one ${singular}`,
@@ -288,23 +302,23 @@ const ${singular} = await ${method}({
     // ... data to create a ${singular}
   }
 })
-`, Prism.languages.javascript, 'javascript'),
+`, Prism.languages.javascript, "javascript"),
                         opKeys: field === null || field === void 0 ? void 0 : field.args.map((a) => ({
                             name: a.name,
                             types: a.inputTypes,
-                            required: a.isRequired,
+                            required: a.isRequired
                         })),
                         output: {
                             type: field === null || field === void 0 ? void 0 : field.outputType.type,
                             required: !(field === null || field === void 0 ? void 0 : field.isNullable),
-                            list: field === null || field === void 0 ? void 0 : field.outputType.isList,
-                        },
+                            list: field === null || field === void 0 ? void 0 : field.outputType.isList
+                        }
                     });
                     break;
                 }
                 case generator_helper_1.DMMF.ModelAction.deleteMany: {
                     const field = (_b = schema.outputObjectTypes.prisma
-                        .find((t) => t.name === 'Mutation')) === null || _b === void 0 ? void 0 : _b.fields.find((f) => f.name === val);
+                        .find((t) => t.name === "Mutation")) === null || _b === void 0 ? void 0 : _b.fields.find((f) => f.name === val);
                     ops.push({
                         name: op,
                         description: `Delete zero or more ${singular}`,
@@ -314,23 +328,23 @@ const { count } = await ${method}({
     // ... provide filter here
   }
 })
-`, Prism.languages.javascript, 'javascript'),
+`, Prism.languages.javascript, "javascript"),
                         opKeys: field === null || field === void 0 ? void 0 : field.args.map((a) => ({
                             name: a.name,
                             types: a.inputTypes,
-                            required: a.isRequired,
+                            required: a.isRequired
                         })),
                         output: {
                             type: field === null || field === void 0 ? void 0 : field.outputType.type,
                             required: !(field === null || field === void 0 ? void 0 : field.isNullable),
-                            list: field === null || field === void 0 ? void 0 : field.outputType.isList,
-                        },
+                            list: field === null || field === void 0 ? void 0 : field.outputType.isList
+                        }
                     });
                     break;
                 }
                 case generator_helper_1.DMMF.ModelAction.delete: {
                     const field = (_c = schema.outputObjectTypes.prisma
-                        .find((t) => t.name === 'Mutation')) === null || _c === void 0 ? void 0 : _c.fields.find((f) => f.name === val);
+                        .find((t) => t.name === "Mutation")) === null || _c === void 0 ? void 0 : _c.fields.find((f) => f.name === val);
                     ops.push({
                         name: op,
                         description: `Delete one ${singular}`,
@@ -339,23 +353,23 @@ const ${singular} = await ${method}({
   where: {
     // ... filter to delete one ${singular}
   }
-})`, Prism.languages.javascript, 'javascript'),
+})`, Prism.languages.javascript, "javascript"),
                         opKeys: field === null || field === void 0 ? void 0 : field.args.map((a) => ({
                             name: a.name,
                             types: a.inputTypes,
-                            required: a.isRequired,
+                            required: a.isRequired
                         })),
                         output: {
                             type: field === null || field === void 0 ? void 0 : field.outputType.type,
                             required: !(field === null || field === void 0 ? void 0 : field.isNullable),
-                            list: field === null || field === void 0 ? void 0 : field.outputType.isList,
-                        },
+                            list: field === null || field === void 0 ? void 0 : field.outputType.isList
+                        }
                     });
                     break;
                 }
                 case generator_helper_1.DMMF.ModelAction.findMany: {
                     const field = (_d = schema.outputObjectTypes.prisma
-                        .find((t) => t.name === 'Query')) === null || _d === void 0 ? void 0 : _d.fields.find((f) => f.name === val);
+                        .find((t) => t.name === "Query")) === null || _d === void 0 ? void 0 : _d.fields.find((f) => f.name === val);
                     ops.push({
                         name: op,
                         description: `Find zero or more ${plural}`,
@@ -363,23 +377,23 @@ const ${singular} = await ${method}({
 const ${plural} = await ${method}()
 // Get first 10 ${plural}
 const ${plural} = await ${method}({ take: 10 })
-`, Prism.languages.javascript, 'javascript'),
+`, Prism.languages.javascript, "javascript"),
                         opKeys: field === null || field === void 0 ? void 0 : field.args.map((a) => ({
                             name: a.name,
                             types: a.inputTypes,
-                            required: a.isRequired,
+                            required: a.isRequired
                         })),
                         output: {
                             type: field === null || field === void 0 ? void 0 : field.outputType.type,
                             required: !(field === null || field === void 0 ? void 0 : field.isNullable),
-                            list: field === null || field === void 0 ? void 0 : field.outputType.isList,
-                        },
+                            list: field === null || field === void 0 ? void 0 : field.outputType.isList
+                        }
                     });
                     break;
                 }
                 case generator_helper_1.DMMF.ModelAction.findUnique: {
                     const field = (_e = schema.outputObjectTypes.prisma
-                        .find((t) => t.name === 'Query')) === null || _e === void 0 ? void 0 : _e.fields.find((f) => f.name === val);
+                        .find((t) => t.name === "Query")) === null || _e === void 0 ? void 0 : _e.fields.find((f) => f.name === val);
                     ops.push({
                         name: op,
                         description: `Find zero or one ${plural}`,
@@ -389,23 +403,23 @@ const ${(0, helpers_2.lowerCase)(singular)} = await ${method}({
     // ... provide filter here
   }
 })
-`, Prism.languages.javascript, 'javascript'),
+`, Prism.languages.javascript, "javascript"),
                         opKeys: field === null || field === void 0 ? void 0 : field.args.map((a) => ({
                             name: a.name,
                             types: a.inputTypes,
-                            required: a.isRequired,
+                            required: a.isRequired
                         })),
                         output: {
                             type: field === null || field === void 0 ? void 0 : field.outputType.type,
                             required: !(field === null || field === void 0 ? void 0 : field.isNullable),
-                            list: field === null || field === void 0 ? void 0 : field.outputType.isList,
-                        },
+                            list: field === null || field === void 0 ? void 0 : field.outputType.isList
+                        }
                     });
                     break;
                 }
                 case generator_helper_1.DMMF.ModelAction.findFirst: {
                     const field = (_f = schema.outputObjectTypes.prisma
-                        .find((t) => t.name === 'Query')) === null || _f === void 0 ? void 0 : _f.fields.find((f) => f.name === val);
+                        .find((t) => t.name === "Query")) === null || _f === void 0 ? void 0 : _f.fields.find((f) => f.name === val);
                     ops.push({
                         name: op,
                         description: `Find first ${plural}`,
@@ -415,23 +429,23 @@ const ${(0, helpers_2.lowerCase)(singular)} = await ${method}({
     // ... provide filter here
   }
 })
-`, Prism.languages.javascript, 'javascript'),
+`, Prism.languages.javascript, "javascript"),
                         opKeys: field === null || field === void 0 ? void 0 : field.args.map((a) => ({
                             name: a.name,
                             types: a.inputTypes,
-                            required: a.isRequired,
+                            required: a.isRequired
                         })),
                         output: {
                             type: field === null || field === void 0 ? void 0 : field.outputType.type,
                             required: !(field === null || field === void 0 ? void 0 : field.isNullable),
-                            list: field === null || field === void 0 ? void 0 : field.outputType.isList,
-                        },
+                            list: field === null || field === void 0 ? void 0 : field.outputType.isList
+                        }
                     });
                     break;
                 }
                 case generator_helper_1.DMMF.ModelAction.update: {
                     const field = (_g = schema.outputObjectTypes.prisma
-                        .find((t) => t.name === 'Mutation')) === null || _g === void 0 ? void 0 : _g.fields.find((f) => f.name === val);
+                        .find((t) => t.name === "Mutation")) === null || _g === void 0 ? void 0 : _g.fields.find((f) => f.name === val);
                     ops.push({
                         name: op,
                         description: `Update one ${singular}`,
@@ -444,23 +458,23 @@ const ${(0, helpers_2.lowerCase)(singular)} = await ${method}({
     // ... provide data here
   }
 })
-`, Prism.languages.javascript, 'javascript'),
+`, Prism.languages.javascript, "javascript"),
                         opKeys: field === null || field === void 0 ? void 0 : field.args.map((a) => ({
                             name: a.name,
                             types: a.inputTypes,
-                            required: a.isRequired,
+                            required: a.isRequired
                         })),
                         output: {
                             type: field === null || field === void 0 ? void 0 : field.outputType.type,
                             required: !(field === null || field === void 0 ? void 0 : field.isNullable),
-                            list: field === null || field === void 0 ? void 0 : field.outputType.isList,
-                        },
+                            list: field === null || field === void 0 ? void 0 : field.outputType.isList
+                        }
                     });
                     break;
                 }
                 case generator_helper_1.DMMF.ModelAction.updateMany: {
                     const field = (_h = schema.outputObjectTypes.prisma
-                        .find((t) => t.name === 'Mutation')) === null || _h === void 0 ? void 0 : _h.fields.find((f) => f.name === val);
+                        .find((t) => t.name === "Mutation")) === null || _h === void 0 ? void 0 : _h.fields.find((f) => f.name === val);
                     ops.push({
                         name: op,
                         description: `Update zero or one ${plural}`,
@@ -471,23 +485,23 @@ const ${(0, helpers_2.lowerCase)(singular)} = await ${method}({
   data: {
     // ... provide data here
   }
-})`, Prism.languages.javascript, 'javascript'),
+})`, Prism.languages.javascript, "javascript"),
                         opKeys: field === null || field === void 0 ? void 0 : field.args.map((a) => ({
                             name: a.name,
                             types: a.inputTypes,
-                            required: a.isRequired,
+                            required: a.isRequired
                         })),
                         output: {
                             type: field === null || field === void 0 ? void 0 : field.outputType.type,
                             required: !(field === null || field === void 0 ? void 0 : field.isNullable),
-                            list: field === null || field === void 0 ? void 0 : field.outputType.isList,
-                        },
+                            list: field === null || field === void 0 ? void 0 : field.outputType.isList
+                        }
                     });
                     break;
                 }
                 case generator_helper_1.DMMF.ModelAction.upsert: {
                     const field = (_j = schema.outputObjectTypes.prisma
-                        .find((t) => t.name === 'Mutation')) === null || _j === void 0 ? void 0 : _j.fields.find((f) => f.name === val);
+                        .find((t) => t.name === "Mutation")) === null || _j === void 0 ? void 0 : _j.fields.find((f) => f.name === val);
                     ops.push({
                         name: op,
                         description: `Create or update one ${plural}`,
@@ -502,17 +516,17 @@ const ${(0, helpers_2.lowerCase)(singular)} = await ${method}({
   where: {
     // ... the filter for the ${singular} we want to update
   }
-})`, Prism.languages.javascript, 'javascript'),
+})`, Prism.languages.javascript, "javascript"),
                         opKeys: field === null || field === void 0 ? void 0 : field.args.map((a) => ({
                             name: a.name,
                             types: a.inputTypes,
-                            required: a.isRequired,
+                            required: a.isRequired
                         })),
                         output: {
                             type: field === null || field === void 0 ? void 0 : field.outputType.type,
                             required: !(field === null || field === void 0 ? void 0 : field.isNullable),
-                            list: field === null || field === void 0 ? void 0 : field.outputType.isList,
-                        },
+                            list: field === null || field === void 0 ? void 0 : field.outputType.isList
+                        }
                     });
                     break;
                 }
@@ -527,13 +541,13 @@ const ${(0, helpers_2.lowerCase)(singular)} = await ${method}({
                 documentation: model.documentation,
                 directives: this.getModelDirective(model),
                 fields: this.getModelFields(model),
-                operations: this.getModelOperations(model, dmmf.mappings.find((map) => map.model === model.name), dmmf.schema),
+                operations: this.getModelOperations(model, dmmf.mappings.find((map) => map.model === model.name), dmmf.schema)
             };
         });
     }
     getData(d) {
         return {
-            models: this.getModels(d),
+            models: this.getModels(d)
         };
     }
 }
