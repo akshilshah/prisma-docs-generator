@@ -1,5 +1,5 @@
-import { Generatable } from "./helpers";
 import { DMMF } from "@prisma/generator-helper";
+import { Generatable } from "./helpers";
 import { DMMFDocument, DMMFMapping } from "./transformDMMF";
 type TOCStructure = {
     models: TOCModel[];

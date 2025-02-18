@@ -35,29 +35,7 @@ class TOCGenerator {
               `)
             .join("")}
             </ul>
-          <h5 class="mt-12 mb-2 font-bold"><a href="#types">Types</a></h5>
-          <ul class="mb-2 ml-1">
-            <li class="mb-4">
-              <div class="font-semibold text-gray-700">
-                <a href="#input-types">Input Types</a>
-              </div>
-              <ul class="pl-3 ml-1 border-l-2 border-gray-400">
-              ${this.data.types.inputTypes
-            .map((inputType) => this.getSubFieldHTML("type", "inputType", inputType))
-            .join("")}
-              </ul>
-            </li>
-            <li class="mb-4">
-              <div class="font-semibold text-gray-700">
-                <a href="#output-types">Output Types</a>
-              </div>
-              <ul class="pl-3 ml-1 border-l-2 border-gray-400">
-              ${this.data.types.outputTypes
-            .map((outputType) => this.getSubFieldHTML("type", "outputType", outputType))
-            .join("")}
-              </ul>
-            </li>
-          </ul>
+
         </div>
     `;
     }

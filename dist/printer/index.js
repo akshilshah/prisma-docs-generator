@@ -3,9 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const toc_1 = __importDefault(require("../generator/toc"));
 const model_1 = __importDefault(require("../generator/model"));
-const apitypes_1 = __importDefault(require("../generator/apitypes"));
+const toc_1 = __importDefault(require("../generator/toc"));
 class HTMLPrinter {
     constructor(d) {
         this.data = this.getData(d);
@@ -46,7 +45,6 @@ class HTMLPrinter {
         // all the printers
         const tocGen = new toc_1.default(this.data);
         const modelGen = new model_1.default(this.data);
-        const typeGen = new apitypes_1.default(this.data);
         return `
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +63,6 @@ class HTMLPrinter {
       </div>
       <div class="w-full p-4 bg-white">
         ${modelGen.toHTML()}
-        ${typeGen.toHTML()}
       </div>
       <div>
       </div>

@@ -1,8 +1,8 @@
 // TODO: separate out printers from transformers
 import { Generatable } from '../generator/helpers';
-import TOCGenerator from '../generator/toc';
 import ModelGenerator from '../generator/model';
-import TypesGenerator from '../generator/apitypes';
+import TOCGenerator from '../generator/toc';
+// import TypesGenerator from '../generator/apitypes';
 import { DMMFDocument } from '../generator/transformDMMF';
 
 export default class HTMLPrinter implements Generatable<DMMFDocument> {
@@ -51,7 +51,7 @@ export default class HTMLPrinter implements Generatable<DMMFDocument> {
     // all the printers
     const tocGen = new TOCGenerator(this.data);
     const modelGen = new ModelGenerator(this.data);
-    const typeGen = new TypesGenerator(this.data);
+
 
     return `
 <!DOCTYPE html>
@@ -71,7 +71,6 @@ export default class HTMLPrinter implements Generatable<DMMFDocument> {
       </div>
       <div class="w-full p-4 bg-white">
         ${modelGen.toHTML()}
-        ${typeGen.toHTML()}
       </div>
       <div>
       </div>
