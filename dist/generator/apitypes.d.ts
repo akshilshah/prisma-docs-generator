@@ -1,6 +1,6 @@
+import { DMMF } from '@prisma/generator-helper';
 import { Generatable } from './helpers';
 import { DMMFDocument } from './transformDMMF';
-import { DMMF } from '@prisma/generator-helper';
 type TypesGeneratorStructure = {
     inputTypes: TGType[];
     outputTypes: TGType[];

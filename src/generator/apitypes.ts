@@ -1,6 +1,6 @@
+import { DMMF } from '@prisma/generator-helper';
 import { Generatable, isScalarType } from './helpers';
 import { DMMFDocument } from './transformDMMF';
-import { DMMF } from '@prisma/generator-helper';
 
 type TypesGeneratorStructure = {
   inputTypes: TGType[];
@@ -79,28 +79,29 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
   }
 
   toHTML() {
-    return `<div>
-    <h1 class="text-3xl" id="types">Types</h1>
-        <div>
-          <div class="ml-4">
-            <h3 class="mb-2 text-2xl font-normal" id="input-types">Input Types</h3>
-            <div class="ml-4">
-              ${this.data.inputTypes
-                .map((inputType) => this.getTypeHTML(inputType, 'inputType'))
-                .join(`<hr class="my-4" />`)}
-            </div>
-          </div>
-          <div class="ml-4">
-            <h3 class="mb-2 text-2xl font-normal" id="output-types">Output Types</h3>
-            <div class="ml-4">
-              ${this.data.outputTypes
-                .map((outputType) => this.getTypeHTML(outputType, 'outputType'))
-                .join(`<hr class="my-4" />`)}
-            </div>
-          </div>
-        </div>
-      </div>
-`;
+    return ``;
+//     return `<div>
+//     <h1 class="text-3xl" id="types">Types</h1>
+//         <div>
+//           <div class="ml-4">
+//             <h3 class="mb-2 text-2xl font-normal" id="input-types">Input Types</h3>
+//             <div class="ml-4">
+//               ${this.data.inputTypes
+//                 .map((inputType) => this.getTypeHTML(inputType, 'inputType'))
+//                 .join(`<hr class="my-4" />`)}
+//             </div>
+//           </div>
+//           <div class="ml-4">
+//             <h3 class="mb-2 text-2xl font-normal" id="output-types">Output Types</h3>
+//             <div class="ml-4">
+//               ${this.data.outputTypes
+//                 .map((outputType) => this.getTypeHTML(outputType, 'outputType'))
+//                 .join(`<hr class="my-4" />`)}
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+// `;
   }
 
   getInputTypes(dmmfInputType: DMMF.InputType[]): TGType[] {
